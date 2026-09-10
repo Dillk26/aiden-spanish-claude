@@ -1,1 +1,635 @@
-test
+<title>Repaso de Español 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Azeret+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F6F7F3; --surface:#FFFFFF; --surface-2:#ECEFE7;
+  --ink:#191F1B; --ink-2:#4A554E; --ink-3:#7A867E;
+  --rule:#D7DBD1; --rule-strong:#B6BEB1;
+  --accent:#1F5C4B; --accent-ink:#1F5C4B; --accent-soft:#DEEBE4;
+  --gold:#B87A14; --gold-soft:#F5E8CB;
+  --ok:#2E7D5B; --ok-soft:#DDEEE4;
+  --no:#A8412C; --no-soft:#F6E2DC;
+  --on-accent:#F6F7F3;
+  --shadow:0 1px 2px rgba(25,31,27,.05), 0 8px 24px -16px rgba(25,31,27,.28);
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"Azeret Mono","SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101410; --surface:#181D18; --surface-2:#212721;
+    --ink:#E9ECE5; --ink-2:#A8B2A7; --ink-3:#7B867B;
+    --rule:#2C332C; --rule-strong:#414A41;
+    --accent:#6BC2A0; --accent-ink:#8FD6BA; --accent-soft:#1A3A30;
+    --gold:#DFAE55; --gold-soft:#372B14;
+    --ok:#63BE92; --ok-soft:#1A3527;
+    --no:#E08066; --no-soft:#3A211A;
+    --on-accent:#101410;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101410; --surface:#181D18; --surface-2:#212721;
+  --ink:#E9ECE5; --ink-2:#A8B2A7; --ink-3:#7B867B;
+  --rule:#2C332C; --rule-strong:#414A41;
+  --accent:#6BC2A0; --accent-ink:#8FD6BA; --accent-soft:#1A3A30;
+  --gold:#DFAE55; --gold-soft:#372B14;
+  --ok:#63BE92; --ok-soft:#1A3527;
+  --no:#E08066; --no-soft:#3A211A;
+  --on-accent:#101410;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:var(--f-body); font-size:17px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+.wrap{max-width:1160px; margin:0 auto; padding:0 24px 96px}
+
+/* ---------- masthead ---------- */
+.mast{
+  border-bottom:1px solid var(--rule); padding:40px 0 24px;
+  display:flex; flex-wrap:wrap; align-items:flex-end; gap:24px 40px;
+}
+.mast h1{
+  font-family:var(--f-display); font-weight:700;
+  font-size:clamp(1.9rem,4.4vw,2.6rem); line-height:1.02;
+  letter-spacing:-.025em; margin:0; text-wrap:balance;
+}
+.mast h1 em{font-style:normal; color:var(--accent-ink)}
+.mast p{
+  margin:8px 0 0; color:var(--ink-2); font-size:.98rem;
+  max-width:52ch; line-height:1.5;
+}
+.mast-meta{margin-left:auto; display:flex; align-items:center; gap:20px}
+.tally{text-align:right}
+.tally b{
+  display:block; font-family:var(--f-mono); font-weight:600;
+  font-size:1.5rem; letter-spacing:-.03em; font-variant-numeric:tabular-nums;
+  line-height:1;
+}
+.eyebrow{
+  font-family:var(--f-mono); font-size:.66rem; font-weight:500;
+  text-transform:uppercase; letter-spacing:.14em; color:var(--ink-3);
+}
+.themer{
+  font-family:var(--f-mono); font-size:.68rem; letter-spacing:.08em;
+  background:none; border:1px solid var(--rule); color:var(--ink-2);
+  padding:7px 11px; border-radius:2px; cursor:pointer; text-transform:uppercase;
+}
+.themer:hover{border-color:var(--rule-strong); color:var(--ink)}
+
+/* ---------- shell ---------- */
+.shell{display:grid; grid-template-columns:250px 1fr; gap:56px; padding-top:32px; align-items:start}
+@media (max-width:900px){ .shell{grid-template-columns:1fr; gap:28px} }
+
+/* ---------- index rail ---------- */
+.rail{position:sticky; top:24px}
+@media (max-width:900px){ .rail{position:static} }
+.rail-h{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding-bottom:10px; border-bottom:1.5px solid var(--ink); margin-bottom:2px;
+}
+.rail ol{list-style:none; margin:0; padding:0}
+.rail li{border-bottom:1px solid var(--rule)}
+.pick{
+  width:100%; text-align:left; background:none; border:0; cursor:pointer;
+  display:grid; grid-template-columns:22px 1fr auto; gap:10px; align-items:baseline;
+  padding:11px 8px 11px 0; color:var(--ink); font-family:inherit;
+  border-left:2px solid transparent; padding-left:10px; margin-left:-12px;
+  transition:background .12s ease, border-color .12s ease;
+}
+.pick:hover{background:var(--surface-2)}
+.pick .num{
+  font-family:var(--f-mono); font-size:.7rem; color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
+}
+.pick .nm{font-size:.92rem; line-height:1.3; color:var(--ink-2)}
+.pick[aria-current="true"]{border-left-color:var(--accent); background:var(--surface-2)}
+.pick[aria-current="true"] .nm{color:var(--ink); font-weight:500}
+.pick[aria-current="true"] .num{color:var(--accent-ink)}
+.chip{
+  font-family:var(--f-mono); font-size:.63rem; font-weight:500;
+  padding:2px 5px; border-radius:2px; font-variant-numeric:tabular-nums;
+  background:var(--surface-2); color:var(--ink-3); white-space:nowrap;
+}
+.chip.hi{background:var(--ok-soft); color:var(--ok)}
+.chip.mid{background:var(--gold-soft); color:var(--gold)}
+.chip.lo{background:var(--no-soft); color:var(--no)}
+.rail-note{
+  margin-top:16px; font-size:.78rem; color:var(--ink-3); line-height:1.45;
+  font-family:var(--f-mono); letter-spacing:.01em;
+}
+
+/* ---------- exam header ---------- */
+.exam-head{
+  background:var(--surface); border:1px solid var(--rule); border-radius:3px;
+  padding:22px 26px; box-shadow:var(--shadow); margin-bottom:8px;
+}
+.exam-head h2{
+  font-family:var(--f-display); font-weight:600; font-size:1.6rem;
+  letter-spacing:-.02em; margin:6px 0 0; line-height:1.12; text-wrap:balance;
+}
+.exam-head .focus{margin:6px 0 0; color:var(--ink-2); font-size:.95rem}
+.bar{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  margin-top:18px; padding-top:16px; border-top:1px solid var(--rule);
+}
+.btn{
+  font-family:var(--f-mono); font-size:.72rem; font-weight:500; letter-spacing:.06em;
+  text-transform:uppercase; padding:9px 15px; border-radius:2px; cursor:pointer;
+  border:1px solid var(--rule-strong); background:none; color:var(--ink-2);
+}
+.btn:hover{border-color:var(--ink-3); color:var(--ink)}
+.btn.solid{background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+.btn.solid:hover{filter:brightness(1.08); color:var(--on-accent)}
+.verdict{
+  margin-left:auto; font-family:var(--f-mono); font-size:.8rem; font-weight:500;
+  font-variant-numeric:tabular-nums; color:var(--ink-3); letter-spacing:.01em;
+}
+.verdict .pct{font-size:1.05rem; color:var(--ink)}
+.verdict .pend{color:var(--gold)}
+
+/* ---------- questions ---------- */
+.qlist{list-style:none; margin:0; padding:0}
+.q{
+  display:grid; grid-template-columns:34px 1fr; gap:0 14px;
+  padding:24px 0 22px 12px; border-bottom:1px solid var(--rule);
+  border-left:2px solid transparent; margin-left:-14px;
+}
+.q.right{border-left-color:var(--ok)}
+.q.wrong{border-left-color:var(--no)}
+.q .qn{
+  font-family:var(--f-mono); font-size:.78rem; font-weight:500; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; padding-top:2px;
+}
+.q .sec{
+  grid-column:2; font-family:var(--f-mono); font-size:.62rem; font-weight:500;
+  text-transform:uppercase; letter-spacing:.14em; color:var(--gold); margin-bottom:5px;
+}
+.q .prompt{grid-column:2; margin:0; font-size:1.06rem; line-height:1.5; text-wrap:pretty}
+.q .prompt i{font-style:italic}
+.q .body{grid-column:2; margin-top:12px}
+
+/* multiple choice */
+.opts{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--rule)}
+.opt{
+  display:flex; gap:11px; align-items:flex-start; cursor:pointer;
+  padding:9px 8px 9px 2px; border-bottom:1px solid var(--rule);
+  font-size:.99rem; line-height:1.45;
+}
+.opt:hover{background:var(--surface-2)}
+.opt input{
+  appearance:none; width:15px; height:15px; margin:5px 0 0; flex:none;
+  border:1.5px solid var(--rule-strong); border-radius:50%; cursor:pointer;
+}
+.opt input:checked{border-color:var(--accent); border-width:4.5px}
+.opt .ltr{
+  font-family:var(--f-mono); font-size:.75rem; color:var(--ink-3);
+  flex:none; padding-top:2px; width:14px;
+}
+.opt.is-key{background:var(--ok-soft)}
+.opt.is-key .ltr{color:var(--ok)}
+.opt.is-miss{background:var(--no-soft)}
+.opt.is-miss .ltr{color:var(--no)}
+.graded .opt{cursor:default}
+.graded .opt:hover{background:none}
+.graded .opt.is-key{background:var(--ok-soft)}
+.graded .opt.is-miss{background:var(--no-soft)}
+
+/* free response — the ruled blank */
+.blank{
+  width:100%; font-family:var(--f-body); font-size:1.04rem; color:var(--ink);
+  background:none; border:0; border-bottom:1.5px solid var(--rule-strong);
+  padding:6px 2px; line-height:1.6;
+}
+.blank::placeholder{color:var(--ink-3); font-style:italic}
+.blank:focus{border-bottom-color:var(--accent); outline:none}
+textarea.blank{
+  border:1px solid var(--rule-strong); border-radius:2px; padding:11px 12px;
+  min-height:104px; resize:vertical;
+  background:repeating-linear-gradient(var(--surface) 0 27px, var(--rule) 27px 28px);
+  background-attachment:local;
+}
+textarea.blank:focus{border-color:var(--accent)}
+
+/* feedback */
+.fb{grid-column:2; margin-top:12px; font-size:.94rem; line-height:1.5}
+.fb .tag{
+  font-family:var(--f-mono); font-size:.64rem; font-weight:600; letter-spacing:.11em;
+  text-transform:uppercase; padding:2px 6px; border-radius:2px; margin-right:8px;
+  vertical-align:1px;
+}
+.tag.y{background:var(--ok-soft); color:var(--ok)}
+.tag.n{background:var(--no-soft); color:var(--no)}
+.tag.q{background:var(--gold-soft); color:var(--gold)}
+.model{
+  margin:9px 0 0; padding:10px 14px; background:var(--surface-2);
+  border-left:2px solid var(--accent); border-radius:0 2px 2px 0;
+}
+.model .lab{
+  display:block; font-family:var(--f-mono); font-size:.62rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:3px;
+}
+.model .txt{font-size:1rem}
+.why{margin:8px 0 0; color:var(--ink-2); font-size:.9rem; line-height:1.5}
+.selfmark{display:flex; gap:8px; margin-top:11px; align-items:center; flex-wrap:wrap}
+.selfmark .lab{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.sm{
+  font-family:var(--f-mono); font-size:.7rem; letter-spacing:.05em; padding:6px 12px;
+  border:1px solid var(--rule-strong); background:none; color:var(--ink-2);
+  border-radius:2px; cursor:pointer;
+}
+.sm:hover{border-color:var(--ink-3); color:var(--ink)}
+.sm[aria-pressed="true"].y{background:var(--ok-soft); border-color:var(--ok); color:var(--ok)}
+.sm[aria-pressed="true"].n{background:var(--no-soft); border-color:var(--no); color:var(--no)}
+
+.footnote{
+  margin-top:36px; padding-top:20px; border-top:1px solid var(--rule);
+  color:var(--ink-3); font-size:.85rem; line-height:1.55; max-width:62ch;
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none !important; animation:none !important} }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">Español 1 · Profe C · Unidad 1</div>
+      <h1>Repaso de <em>Español 1</em></h1>
+      <p>Ten practice tests drawn from the five slide decks — saludos, presentaciones, <i>¿de dónde eres?</i> and <i>¿de dónde son tus padres?</i> Multiple choice grades itself; written answers are checked against accepted responses.</p>
+    </div>
+    <div class="mast-meta">
+      <div class="tally">
+        <div class="eyebrow">Exámenes hechos</div>
+        <b id="done-tally">0 / 10</b>
+      </div>
+      <button class="themer" id="themer" type="button">Tema</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="rail" aria-label="Índice de exámenes">
+      <div class="rail-h">
+        <span class="eyebrow">Índice</span>
+        <span class="eyebrow">Nota</span>
+      </div>
+      <ol id="rail"></ol>
+      <p class="rail-note">Los acentos y la puntuación no cuentan al calificar. Escribe ñ o n — las dos valen.</p>
+    </nav>
+
+    <main id="stage"></main>
+  </div>
+
+  <p class="footnote">Built from <i>Spanish Introductions</i> (Aug 20–21), <i>Saludos y presentaciones</i> (Aug 24–25), <i>¿Cómo se llama él/ella?</i>, <i>¿De dónde eres?</i> (Aug 26–27) and <i>¿De dónde son tus padres?</i> (Aug 28–31). Every question uses only vocabulary and characters that appear in those slides.</p>
+</div>
+
+<script>
+const TESTS=[
+{n:1,title:"Los primeros nombres",focus:"Me llamo · te llamas · se llama",qs:[
+ {t:"mc",s:"Selección",q:"Profe C points at himself and says «Yo me llamo Profe C.» What is he doing?",o:["Asking for your name","Saying his own name","Saying goodbye","Asking where you are from"],a:1,why:"<i>Me llamo</i> = I call myself. It is the frame you use for your own name."},
+ {t:"mc",s:"Selección",q:"«¿Cómo te llamas?» literally means:",o:["How are you?","How do you call yourself?","Where are you from?","What is his name?"],a:1,why:"Literally “how do you call yourself?” — it is the everyday way to ask someone's name."},
+ {t:"mc",s:"Completar",q:"Marco: Hola. ¿Cómo ______ llamas?",o:["me","te","se","mucho"],a:1,why:"You are asking the person in front of you, so it is <i>te</i>."},
+ {t:"mc",s:"Completar",q:"Sofía: ______ llamo Sofía.",o:["Me","Te","Se","Son"],a:0,why:"She is naming herself → <i>Me llamo</i>."},
+ {t:"mc",s:"Completar",q:"Ella ______ llama Marge.",o:["me","te","se","es"],a:2,why:"Third person (someone else) takes <i>se llama</i>."},
+ {t:"mc",s:"Pronunciación",q:"In «me llamo», the letters <i>ll</i> sound like:",o:["English L in “lamp”","English Y in “yes”","English J in “jam”","Nothing — they are silent"],a:1,why:"LL = the Y sound. “Me YA-mo.”"},
+ {t:"mc",s:"Selección",q:"Your partner says «Mucho gusto.» The best reply is:",o:["Igualmente.","Me llamo.","Buenos días.","Soy de."],a:0,why:"<i>Igualmente</i> = likewise. It is the standard answer to <i>mucho gusto</i>."},
+ {t:"mc",s:"Selección",q:"Which question asks about a third person who is <i>not</i> part of the conversation?",o:["¿Cómo te llamas?","¿Cómo se llama él?","Me llamo Ana.","Mucho gusto."],a:1,why:"<i>¿Cómo se llama?</i> is for asking about a third party."},
+ {t:"fr",s:"Respuesta corta",q:"Answer in a complete sentence: ¿Cómo te llamas?",mode:"has",has:["me llamo"],model:"Yo me llamo ______. (your name)",why:"A complete answer keeps the frame: <i>Yo me llamo…</i>"},
+ {t:"fr",s:"Completar",q:"Write the missing word: “Marco: Hola. ¿Cómo ______ llamas?”",ok:["te"],model:"te",why:"Asking the person directly."},
+ {t:"fr",s:"Completar",q:"Write the missing word: “Él ______ llama Homero.”",ok:["se"],model:"se",why:"Third person → <i>se llama</i>."},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “Nice to meet you.”",ok:["mucho gusto"],model:"Mucho gusto.",why:""},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “My name is Marco.”",ok:["me llamo marco","yo me llamo marco"],model:"(Yo) me llamo Marco.",why:"<i>Yo</i> is optional — the frame already says who you mean."},
+ {t:"open",s:"Producción",q:"Write the full four-line introduction dialogue between Persona A and Persona B: A asks the name, B answers and asks back, A answers and says <i>mucho gusto</i>, B closes.",model:"A: Hola, ¿cómo te llamas?<br>B: Me llamo Elena. ¿Y tú?<br>A: Me llamo Carlos. Mucho gusto.<br>B: Igualmente.",why:"Check: all four lines present, <i>¿Y tú?</i> included, and it ends with <i>Igualmente</i>."}
+]},
+
+{n:2,title:"Él, ella, éste y ésta",focus:"Tercera persona · presentar a alguien",qs:[
+ {t:"mc",s:"Selección",q:"You point at Sofía to present her to the class. You say:",o:["Éste es Sofía.","Ésta es Sofía.","Ésta es Marco.","Se llamo Sofía."],a:1,why:"<i>Ésta</i> for a girl, <i>Éste</i> for a boy."},
+ {t:"mc",s:"Selección",q:"«Éste es Marco» is used when you are:",o:["Asking Marco his name","Presenting Marco to someone","Saying goodbye to Marco","Asking where Marco is from"],a:1,why:"<i>Éste es / Ésta es</i> presents a person — it does not ask for a name."},
+ {t:"mc",s:"Completar",q:"Pointing at a boy: ¿Cómo se llama ______?",o:["ella","él","tú","yo"],a:1,why:"<i>él</i> = he (chico), <i>ella</i> = she (chica)."},
+ {t:"mc",s:"Selección",q:"Which sentence correctly introduces Marge?",o:["Él se llama Marge.","Ella se llama Marge.","Éste es Marge.","Ella te llama Marge."],a:1,why:"Marge is a chica → <i>ella</i> and <i>ésta</i>."},
+ {t:"mc",s:"Selección",q:"Profe asks: «¿Él se llama Bart o se llama Homero?» You are looking at Bart. Best answer:",o:["Sí.","Se llama Bart.","Me llamo Bart.","Él es de Bart."],a:1,why:"An either/or question wants the name, not sí/no."},
+ {t:"mc",s:"Vocabulario",q:"«Se llama» literally means:",o:["He/she is from","He/she calls himself/herself","Nice to meet you","My name is"],a:1,why:"Same verb as <i>me llamo</i>, but for a third person."},
+ {t:"mc",s:"Selección",q:"Which pair is correct?",o:["él = she, ella = he","él = he, ella = she","él = you, ella = I","él = they, ella = we"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"You say «Ésta es Sofía» and the class answers «¡Mucho gusto!» Sofía replies:",o:["Adiós.","Igualmente.","Me llamo.","¿Y tú?"],a:1,why:""},
+ {t:"fr",s:"Completar",q:"From the reading <i>Ana presenta a sus amigos</i>: “______ es Marco. Marco es estudiante también.”",ok:["este","éste"],model:"Éste",why:"Marco is a chico."},
+ {t:"fr",s:"Completar",q:"“______ es Sofía. Sofía es muy simpática.”",ok:["esta","ésta"],model:"Ésta",why:"Sofía is a chica."},
+ {t:"fr",s:"Comprensión",q:"¿Cómo se llama el amigo de Ana?",ok:["marco","se llama marco","el amigo de ana se llama marco","su amigo se llama marco"],model:"Se llama Marco.",why:""},
+ {t:"fr",s:"Comprensión",q:"¿Cómo se llama la amiga de Ana?",ok:["sofia","se llama sofia","la amiga de ana se llama sofia","su amiga se llama sofia"],model:"Se llama Sofía.",why:""},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “Her name is Lisa.”",ok:["ella se llama lisa","se llama lisa"],model:"Ella se llama Lisa.",why:""},
+ {t:"open",s:"Producción",q:"Introduce two classmates in Spanish — one chico and one chica — using <i>Éste es</i> and <i>Ésta es</i>, then say each one's name a second time with <i>se llama</i>.",model:"Éste es Marco. Él se llama Marco.<br>Ésta es Sofía. Ella se llama Sofía.",why:"Check: <i>Éste</i> with the boy, <i>Ésta</i> with the girl, and <i>él/ella se llama</i> spelled correctly."}
+]},
+
+{n:3,title:"Saludos y despedidas",focus:"La hora del día · cómo despedirse",qs:[
+ {t:"mc",s:"Selección",q:"Son las 7 de la mañana. ¿Qué saludo usas?",o:["Buenos días","Buenas tardes","Buenas noches","Nos vemos"],a:0,why:"Morning until noon → <i>Buenos días</i>."},
+ {t:"mc",s:"Selección",q:"Es la 1 de la tarde. ¿Qué saludo usas?",o:["Buenos días","Buenas tardes","Buenas noches","Hasta mañana"],a:1,why:"From noon until sunset → <i>Buenas tardes</i>."},
+ {t:"mc",s:"Selección",q:"Son las 9 de la noche. ¿Qué saludo usas?",o:["Buenos días","Buenas tardes","Buenas noches","Igualmente"],a:2,why:"After dark → <i>Buenas noches</i>."},
+ {t:"mc",s:"Selección",q:"«Buenas tardes» is used:",o:["In the morning until noon","From noon until sunset","Only after dark","Only at school"],a:1,why:""},
+ {t:"mc",s:"Vocabulario",q:"«Hasta mañana» means:",o:["See you later","See you tomorrow","I have to go","Have a nice day"],a:1,why:"<i>Mañana</i> = tomorrow."},
+ {t:"mc",s:"Situación",q:"You are rushing to catch the bus and have to leave right now. Best phrase:",o:["Buenos días","Tengo que irme","Igualmente","Mucho gusto"],a:1,why:"<i>Tengo que irme</i> = I have to go."},
+ {t:"mc",s:"Situación",q:"You will see your friend again in 5th period today. Best goodbye:",o:["Hasta mañana","Hasta luego","Buenos días","Mucho gusto"],a:1,why:"<i>Hasta luego</i> = see you later, same day. <i>Nos vemos</i> also works here."},
+ {t:"mc",s:"Vocabulario",q:"«¡Que te vaya bien!» means:",o:["I have to go","Have a nice day / hope it goes well","See you tomorrow","Likewise"],a:1,why:""},
+ {t:"mc",s:"Situación",q:"Son las 11 de la noche y te vas a dormir. ¿Qué dices?",o:["Buenos días","Buenas tardes","Buenas noches","Hasta luego"],a:2,why:"<i>Buenas noches</i> works both as an evening greeting and as good night."},
+ {t:"fr",s:"Respuesta corta",q:"Write the greeting you would use at 8:00 AM.",ok:["buenos dias"],model:"Buenos días.",why:""},
+ {t:"fr",s:"Respuesta corta",q:"Write the greeting you would use at 9:00 PM.",ok:["buenas noches"],model:"Buenas noches.",why:""},
+ {t:"fr",s:"Respuesta corta",q:"Write the goodbye that means “See you soon / we'll see each other.”",ok:["nos vemos"],model:"Nos vemos.",why:""},
+ {t:"fr",s:"Situación",q:"You are leaving school on Thursday and you will be back on Friday. Write the best goodbye.",ok:["hasta manana"],model:"Hasta mañana.",why:"You see them the next day → <i>hasta mañana</i>."},
+ {t:"open",s:"Escritura",q:"Put this scrambled exchange in the correct order. Number the lines 1–6.<br>• B: Igualmente. Hasta mañana.<br>• A: Buenas tardes.<br>• A: Me llamo Silvia. ¿Y tú?<br>• B: Me llamo Ana. Mucho gusto.<br>• B: Buenas tardes. ¿Cómo te llamas?<br>• A: Hasta mañana.",model:"1. A: Buenas tardes.<br>2. B: Buenas tardes. ¿Cómo te llamas?<br>3. A: Me llamo Silvia. ¿Y tú?<br>4. B: Me llamo Ana. Mucho gusto.<br>5. B: Igualmente. Hasta mañana.<br>6. A: Hasta mañana.",why:"Greeting → question → name → name + mucho gusto → igualmente → goodbye."}
+]},
+
+{n:4,title:"¿De dónde eres?",focus:"Soy de · eres · él/ella es de",qs:[
+ {t:"mc",s:"Vocabulario",q:"«¿De dónde eres?» means:",o:["What is your name?","Where are you from?","How are you?","Who is he?"],a:1,why:"<i>de</i> = from, <i>dónde</i> = where, <i>eres</i> = are (you)."},
+ {t:"mc",s:"Desglose",q:"In «¿De dónde eres?», the word <i>eres</i> means:",o:["I am","are (you)","they are","is"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"Which is a correct answer to «¿De dónde eres?»",o:["Yo me llamo Los Ángeles.","Yo soy de Los Ángeles.","Él es de Los Ángeles.","Mis padres son de Los Ángeles."],a:1,why:"The question asks about <i>you</i>, so answer with <i>yo soy de</i>."},
+ {t:"mc",s:"Desglose",q:"«Dónde» means:",o:["from","where","who","how"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"¿De dónde es Bob Esponja?",o:["Venice Beach","Bikini Bottom","Springfield","Metropolis"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"¿De dónde es Superman?",o:["Gotham","Metropolis","Springfield","Bikini Bottom"],a:1,why:"Superman es de Metropolis."},
+ {t:"mc",s:"Selección",q:"Which question asks about a third person's origin?",o:["¿De dónde eres?","¿De dónde es él?","¿De dónde son tus padres?","¿Cómo se llama él?"],a:1,why:"<i>eres</i> → you; <i>es</i> → he/she; <i>son</i> → they."},
+ {t:"mc",s:"Completar",q:"Ésta es Sofía. Ella ______ de Torrance.",o:["soy","eres","es","son"],a:2,why:"One other person → <i>es</i>."},
+ {t:"mc",s:"Desglose",q:"In «soy de Inglewood», the word <i>de</i> means:",o:["the","from","of the class","and"],a:1,why:"Think “place of origin.”"},
+ {t:"fr",s:"Respuesta corta",q:"Answer in a complete sentence: ¿De dónde eres?",mode:"has",has:["soy de"],model:"Yo soy de ______. (your city)",why:"Keep the frame <i>Yo soy de…</i>"},
+ {t:"fr",s:"Completar",q:"“Éste es Marco. Él ______ de Hawthorne.”",ok:["es"],model:"es",why:""},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “I am from Inglewood.”",ok:["yo soy de inglewood","soy de inglewood"],model:"(Yo) soy de Inglewood.",why:""},
+ {t:"fr",s:"Corrección",q:"Bart es de Los Ángeles, ¿sí o no? Answer and correct it if it is false.",mode:"has",has:["no","springfield"],model:"No. Bart es de Springfield.",why:"Say <i>no</i>, then give the true origin."},
+ {t:"open",s:"Producción",q:"<b>El Círculo.</b> Introduce yourself with your name and where you are from, then say the name and origin of the person who went before you — in third person.",model:"Hola. Me llamo Marco. Yo soy de Hawthorne.<br>Él se llama Profe C. Él es de Inglewood.",why:"Check: <i>soy</i> for yourself, then <i>se llama</i> + <i>es de</i> for the other person."}
+]},
+
+{n:5,title:"¿De dónde son tus padres?",focus:"Son de · la familia",qs:[
+ {t:"mc",s:"Vocabulario",q:"«¿De dónde son tus padres?» means:",o:["Where are you from?","Where are your parents from?","What are your parents' names?","Who are your parents?"],a:1,why:"<i>tus</i> = your, <i>padres</i> = parents, <i>son</i> = are (they)."},
+ {t:"mc",s:"Desglose",q:"«Tus» means:",o:["my","your","his","their"],a:1,why:""},
+ {t:"mc",s:"Desglose",q:"«Son» means:",o:["I am","are (you)","is","are (they)"],a:3,why:"Two or more people → <i>son</i>."},
+ {t:"mc",s:"Completar",q:"Mis padres ______ de Guatemala.",o:["soy","es","son","eres"],a:2,why:"<i>Padres</i> is plural → <i>son</i>."},
+ {t:"mc",s:"Selección",q:"“Mi mamá es de Guatemala” + “Mi papá es de Guatemala” combine into:",o:["Mis padres es de Guatemala.","Mis padres son de Guatemala.","Mis padres soy de Guatemala.","Mi padres son de Guatemala."],a:1,why:"<i>es</i> + <i>es</i> becomes <i>son</i>."},
+ {t:"mc",s:"Selección",q:"Los padres de Maribel (de <i>Encanto</i>) son de:",o:["México","Colombia","Texas","Los Ángeles"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"Los padres de Miguel (de <i>Coco</i>) son de:",o:["México","Canadá","España","Colombia"],a:0,why:""},
+ {t:"mc",s:"Completar",q:"Yo ______ de Los Ángeles. Mis padres ______ de El Salvador.",o:["soy / son","son / soy","es / son","soy / es"],a:0,why:"<i>Yo</i> → soy. <i>Mis padres</i> → son."},
+ {t:"mc",s:"Sí o no",q:"¿Los padres de Bart Simpson son de Springfield?",o:["Sí.","No, son de Bikini Bottom.","No, son de México.","No, son de Colombia."],a:0,why:""},
+ {t:"fr",s:"Respuesta corta",q:"Answer in a complete sentence: ¿De dónde son tus padres?",mode:"has",has:["son de"],model:"Mis padres son de ______.",why:""},
+ {t:"fr",s:"Completar",q:"Los padres de Mirabel ______ (es / son) de Colombia.",ok:["son"],model:"son",why:"Plural subject."},
+ {t:"fr",s:"Completar",q:"Write the correct form: “Yo (soy / son) de Los Ángeles.”",ok:["soy"],model:"soy",why:""},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “My parents are from Honduras.”",ok:["mis padres son de honduras"],model:"Mis padres son de Honduras.",why:""},
+ {t:"open",s:"Producción",q:"<b>Mi Familia.</b> Write at least three sentences: your name, where you are from, and where your parents are from.",model:"Me llamo Dillon. Yo soy de Los Ángeles. Mis padres son de Guatemala.",why:"Check: three sentences, <i>me llamo</i>, <i>soy de</i>, and <i>son de</i> all used correctly."}
+]},
+
+{n:6,title:"El mundo hispanohablante",focus:"Países y regiones",qs:[
+ {t:"mc",s:"Geografía",q:"Guatemala está en:",o:["Norteamérica","Centroamérica","el Caribe","Sudamérica"],a:1,why:"Centroamérica: Guatemala, El Salvador, Honduras, Nicaragua, Costa Rica, Panamá."},
+ {t:"mc",s:"Geografía",q:"¿Qué país hispanohablante está en Europa?",o:["México","España","Cuba","Argentina"],a:1,why:"España is the only one in Europe."},
+ {t:"mc",s:"Geografía",q:"Cuba está en:",o:["el Caribe","Sudamérica","Centroamérica","África"],a:0,why:"El Caribe: Cuba, la República Dominicana, Puerto Rico."},
+ {t:"mc",s:"Cultura",q:"¿En Brasil hablan español o portugués?",o:["Español","Portugués","Inglés","Francés"],a:1,why:"Brasil is the big exception in South America — Portuguese."},
+ {t:"mc",s:"Geografía",q:"¿Cuál NO está en Sudamérica?",o:["Perú","Chile","Panamá","Uruguay"],a:2,why:"Panamá is in Centroamérica."},
+ {t:"mc",s:"Geografía",q:"El país hispanohablante en África es:",o:["Guinea Ecuatorial","Marruecos","Egipto","Angola"],a:0,why:""},
+ {t:"mc",s:"Geografía",q:"Puerto Rico y la República Dominicana están en:",o:["Centroamérica","el Caribe","Norteamérica","Europa"],a:1,why:""},
+ {t:"mc",s:"Gallery walk",q:"¿De dónde es Sofía?",o:["Colombia","España","Guatemala","Argentina"],a:1,why:"Sofía es de España."},
+ {t:"mc",s:"Gallery walk",q:"¿Quién es de Argentina?",o:["Mateo","Sofía","Miguel","Doña Carmen"],a:3,why:"Doña Carmen es de Argentina."},
+ {t:"fr",s:"Respuesta corta",q:"Name two Spanish-speaking countries in Centroamérica.",mode:"any",n:2,any:["guatemala","el salvador","salvador","honduras","nicaragua","costa rica","panama"],model:"Guatemala, El Salvador, Honduras, Nicaragua, Costa Rica, Panamá — any two.",why:""},
+ {t:"fr",s:"Sí o no",q:"¿En México hablan español? Answer in a sentence.",mode:"has",has:["si"],model:"Sí, en México hablan español.",why:""},
+ {t:"fr",s:"Gallery walk",q:"¿Cómo se llama la persona de Colombia?",ok:["mateo","se llama mateo","la persona de colombia se llama mateo"],model:"Se llama Mateo.",why:""},
+ {t:"fr",s:"Gallery walk",q:"¿De dónde es Miguel?",ok:["guatemala","es de guatemala","miguel es de guatemala","el es de guatemala"],model:"Miguel es de Guatemala.",why:""},
+ {t:"open",s:"Escritura",q:"Write one sentence for each region, naming a country in it: Norteamérica, Centroamérica, el Caribe, Sudamérica.",model:"México está en Norteamérica.<br>Honduras está en Centroamérica.<br>Puerto Rico está en el Caribe.<br>Argentina está en Sudamérica.",why:"Check: four sentences, one correct country per region."}
+]},
+
+{n:7,title:"Diálogos completos",focus:"Armar una conversación entera",qs:[
+ {t:"mc",s:"Diálogo",q:"A: «Hola, ¿cómo te llamas?» — B responds:",o:["Soy de Los Ángeles.","Me llamo Elena.","Se llama Elena.","Igualmente."],a:1,why:"The question asks for B's own name."},
+ {t:"mc",s:"Diálogo",q:"A: «Me llamo Carlos. Mucho gusto.» — B responds:",o:["Igualmente.","Adiós.","¿Y tú?","Buenos días."],a:0,why:""},
+ {t:"mc",s:"Vocabulario",q:"In «Me llamo Ana. ¿Y tú?», the phrase <i>¿Y tú?</i> means:",o:["And you?","And him?","See you.","Are you?"],a:0,why:"It hands the question back to the other person."},
+ {t:"mc",s:"Comprensión",q:"Diego: «Buenas noches. ¿Cómo te llamas?» Carmen: «Buenas noches. Me llamo Carmen.» — ¿Es la mañana, la tarde o la noche?",o:["La mañana","La tarde","La noche","No se sabe"],a:2,why:"<i>Buenas noches</i> tells you the time of day."},
+ {t:"mc",s:"Completar",q:"Marco introduces Sofía to Diego: «Diego, ______ se llama Sofía.»",o:["él","ella","éste","yo"],a:1,why:"Sofía is a chica, so <i>ella se llama</i>."},
+ {t:"mc",s:"Completar",q:"Pointing at Diego: «Sofía, ______ se llama Diego.»",o:["ella","él","ésta","tú"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"Which line does NOT belong in a first-meeting introduction?",o:["Mucho gusto.","Igualmente.","¿Cómo te llamas?","Hasta mañana, mamá."],a:3,why:"The others are all introduction frames."},
+ {t:"mc",s:"Orden",q:"Best order for meeting someone new at 1:00 PM:",o:["Buenas tardes → ¿Cómo te llamas? → Me llamo… → Mucho gusto → Igualmente","Igualmente → Buenas tardes → Mucho gusto → Me llamo… → ¿Cómo te llamas?","Mucho gusto → Me llamo… → Buenas noches → Igualmente → Adiós","¿Cómo te llamas? → Igualmente → Buenos días → Me llamo… → Mucho gusto"],a:0,why:"Greeting, then question, then name, then the mucho gusto / igualmente pair."},
+ {t:"fr",s:"Completar",q:"“Me ______ Marco. ¿Y tú?”",ok:["llamo"],model:"llamo",why:""},
+ {t:"fr",s:"Completar",q:"“A: Mucho gusto.  B: ______.”",ok:["igualmente"],model:"Igualmente.",why:""},
+ {t:"fr",s:"Completar",q:"“B: Igualmente. ¿De dónde ______?” (B is asking A)",ok:["eres"],model:"eres",why:"Asking the person directly → <i>eres</i>."},
+ {t:"fr",s:"Completar",q:"“A: Yo ______ de Hawthorne.”",ok:["soy"],model:"soy",why:""},
+ {t:"fr",s:"Producción",q:"You just met Sofía and she is from Torrance. Report both facts to a third person in two sentences.",mode:"has",has:["se llama","es de"],model:"Ella se llama Sofía. Ella es de Torrance.",why:"Third person needs <i>se llama</i> and <i>es de</i>."},
+ {t:"open",s:"Producción",q:"Write a complete six-line conversation: a time-of-day greeting, both names, <i>mucho gusto / igualmente</i>, where each person is from, and a goodbye.",model:"A: Buenas tardes. ¿Cómo te llamas?<br>B: Me llamo Ana. ¿Y tú?<br>A: Me llamo Silvia. Mucho gusto.<br>B: Igualmente. ¿De dónde eres?<br>A: Yo soy de Inglewood. ¿Y tú?<br>B: Yo soy de Torrance. ¡Hasta luego!",why:"Check: greeting matches a time of day, both names, both origins, and a goodbye."}
+]},
+
+{n:8,title:"Soy, eres, es, son",focus:"Las cuatro formas del verbo",qs:[
+ {t:"mc",s:"Completar",q:"Yo ______ de Inglewood.",o:["soy","eres","es","son"],a:0,why:"<i>Yo</i> → soy."},
+ {t:"mc",s:"Completar",q:"¿De dónde ______ tú?",o:["soy","eres","es","son"],a:1,why:"<i>Tú</i> → eres."},
+ {t:"mc",s:"Completar",q:"Ella ______ de España.",o:["soy","eres","es","son"],a:2,why:"<i>Él / ella</i> → es."},
+ {t:"mc",s:"Completar",q:"Mis padres ______ de El Salvador.",o:["soy","eres","es","son"],a:3,why:"Plural → son."},
+ {t:"mc",s:"Completar",q:"Los padres de Bob Esponja ______ de Bikini Bottom.",o:["soy","eres","es","son"],a:3,why:"<i>Los padres</i> is plural."},
+ {t:"mc",s:"Selección",q:"Which sentence is CORRECT?",o:["Yo son de Los Ángeles.","Mis padres es de Perú.","Él es de Cuba.","Tú soy de Chile."],a:2,why:"Only <i>Él es</i> matches its subject."},
+ {t:"mc",s:"Selección",q:"Which sentence is INCORRECT?",o:["Yo soy de Torrance.","Ella es de Colombia.","Mis padres son de México.","Yo es de Hawthorne."],a:3,why:"<i>Yo</i> takes <i>soy</i>, never <i>es</i>."},
+ {t:"mc",s:"Selección",q:"When you combine «es» + «es» (mamá and papá together), you get:",o:["soy","eres","son","somos"],a:2,why:"Two people → son."},
+ {t:"mc",s:"Vocabulario",q:"In «Somos compañeros de clase», <i>somos</i> means:",o:["I am","you are","we are","they are"],a:2,why:"From the reading — Ana and Marco together."},
+ {t:"fr",s:"Completar",q:"Tú ______ de Long Beach.",ok:["eres"],model:"eres",why:""},
+ {t:"fr",s:"Completar",q:"Doña Carmen ______ de Argentina.",ok:["es"],model:"es",why:""},
+ {t:"fr",s:"Completar",q:"Los padres de Miguel ______ de México.",ok:["son"],model:"son",why:""},
+ {t:"fr",s:"Corrección",q:"Rewrite this sentence correctly: “Mis padres es de Guatemala.”",ok:["mis padres son de guatemala"],model:"Mis padres son de Guatemala.",why:"Plural subject needs <i>son</i>."},
+ {t:"open",s:"Producción",q:"Write four sentences — one with <i>soy</i>, one with <i>eres</i>, one with <i>es</i>, one with <i>son</i>.",model:"Yo soy de Los Ángeles.<br>¿De dónde eres tú?<br>Ella es de España.<br>Mis padres son de Guatemala.",why:"Check: each form matched to the right subject."}
+]},
+
+{n:9,title:"Repaso general",focus:"Un poco de todo",qs:[
+ {t:"mc",s:"Completar",q:"Hola. ¿Cómo ______ llamas?",o:["me","te","se","son"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"Son las 2 de la tarde. ¿Qué saludo usas?",o:["Buenos días","Buenas tardes","Buenas noches","Nos vemos"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"You present a chica to the class. You say:",o:["Éste es…","Ésta es…","Él se llama…","Ella te llamas…"],a:1,why:""},
+ {t:"mc",s:"Vocabulario",q:"«Nos vemos» means:",o:["I have to go","See you soon","Good night","Nice to meet you"],a:1,why:""},
+ {t:"mc",s:"Completar",q:"Mis padres ______ de Perú.",o:["soy","eres","es","son"],a:3,why:""},
+ {t:"mc",s:"Geografía",q:"Perú está en:",o:["Centroamérica","el Caribe","Sudamérica","Europa"],a:2,why:""},
+ {t:"mc",s:"Selección",q:"«Igualmente» is the answer to:",o:["¿De dónde eres?","Mucho gusto.","¿Cómo se llama él?","Buenas noches."],a:1,why:""},
+ {t:"mc",s:"Pronunciación",q:"In «ella» and «llamo», the <i>ll</i> sounds like:",o:["L","Y","J","H"],a:1,why:""},
+ {t:"mc",s:"Selección",q:"Which question asks for a third person's name?",o:["¿Cómo te llamas?","¿Cómo se llama ella?","¿De dónde eres?","¿Y tú?"],a:1,why:""},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “Good morning. What is your name?”",ok:["buenos dias como te llamas"],model:"Buenos días. ¿Cómo te llamas?",why:""},
+ {t:"fr",s:"Respuesta corta",q:"Answer in a complete sentence: ¿De dónde eres?",mode:"has",has:["soy de"],model:"Yo soy de ______.",why:""},
+ {t:"fr",s:"Completar",q:"Write both missing words: “Éste es Marco. Él ______ de Hawthorne. Sus padres ______ de Guatemala.”",ok:["es son","es y son"],model:"es / son",why:"One person → <i>es</i>; his parents → <i>son</i>."},
+ {t:"fr",s:"Situación",q:"It is Friday afternoon and you are leaving school for the weekend. Write one goodbye you could use.",ok:["adios","hasta luego","nos vemos","que te vaya bien","tengo que irme"],model:"Adiós. / Hasta luego. / Nos vemos. / ¡Que te vaya bien!",why:"Not <i>hasta mañana</i> — you will not see them tomorrow."},
+ {t:"open",s:"Boleto de salida",q:"Answer all four in complete Spanish sentences: (1) your name, (2) where you are from, (3) where your parents are from, (4) one classmate's name, in third person.",model:"1. Me llamo Dillon.<br>2. Yo soy de Los Ángeles.<br>3. Mis padres son de Guatemala.<br>4. Él se llama Marco. / Ella se llama Sofía.",why:"Check: four complete sentences, correct verb form in each."}
+]},
+
+{n:10,title:"Examen final",focus:"Toda la unidad · el más difícil",qs:[
+ {t:"mc",s:"Selección",q:"You want to find out the name of a student across the room. You ask a friend:",o:["¿Cómo te llamas?","¿Cómo se llama él?","¿De dónde eres?","Éste es él."],a:1,why:"<i>¿Cómo se llama?</i> is for a third party who is not in the conversation."},
+ {t:"mc",s:"Situación",q:"It is 8:00 PM and you are meeting your friend's mom for the first time. Best opening:",o:["Buenos días. Mucho gusto.","Buenas noches. Mucho gusto.","Buenas tardes. Igualmente.","Adiós. Mucho gusto."],a:1,why:"After dark → <i>buenas noches</i>, and <i>mucho gusto</i> comes before <i>igualmente</i>."},
+ {t:"mc",s:"Selección",q:"The difference between «Éste es mi compañero» and «¿Cómo se llama él?» is:",o:["They both ask for a name","The first presents someone; the second asks for a name","The first asks; the second presents","They are both goodbyes"],a:1,why:"Presenting vs. asking — that is the whole distinction."},
+ {t:"mc",s:"Selección",q:"Which is written correctly?",o:["Ésta es Marco.","Éste es Sofía.","Ésta es Sofía.","Éste es ella."],a:2,why:"<i>Ésta</i> matches a chica."},
+ {t:"mc",s:"Completar",q:"Yo ______ de Los Ángeles, pero mis padres ______ de Guatemala.",o:["soy / son","son / soy","es / son","soy / es"],a:0,why:""},
+ {t:"mc",s:"Cultura",q:"Which country is NOT Spanish-speaking?",o:["Guinea Ecuatorial","Brasil","Paraguay","Panamá"],a:1,why:"Brasil habla portugués."},
+ {t:"mc",s:"Geografía",q:"Honduras y Nicaragua están en:",o:["Norteamérica","Centroamérica","el Caribe","Sudamérica"],a:1,why:""},
+ {t:"mc",s:"Vocabulario",q:"Profe says «Tengo que irme.» He is:",o:["Introducing someone","Asking your name","Saying he has to go","Saying where he is from"],a:2,why:""},
+ {t:"mc",s:"Comprensión",q:"A classmate says «Ella se llama Sofía y es de Torrance.» You now know:",o:["Her name only","Her origin only","Her name and her origin","Her parents' origin"],a:2,why:"<i>Se llama</i> gives the name, <i>es de</i> gives the origin."},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “This is Sofía. She is from Spain.”",ok:["esta es sofia ella es de espana","esta es sofia es de espana","esta es sofia ella es de espana."],model:"Ésta es Sofía. Ella es de España.",why:""},
+ {t:"fr",s:"Traducción",q:"Write in Spanish: “Where are your parents from?”",ok:["de donde son tus padres"],model:"¿De dónde son tus padres?",why:""},
+ {t:"fr",s:"Respuesta corta",q:"Answer in a complete sentence: ¿Cómo se llama tu profesor de español?",mode:"has",has:["se llama"],model:"Se llama Profe C. / Él se llama Profe Calderón.",why:"Third person → <i>se llama</i>."},
+ {t:"fr",s:"Corrección",q:"Fix both errors: “Éste es Sofía. Sus padres es de México.”",ok:["esta es sofia sus padres son de mexico"],model:"Ésta es Sofía. Sus padres son de México.",why:"<i>Ésta</i> for a chica, and plural <i>padres</i> takes <i>son</i>."},
+ {t:"open",s:"Producción",q:"Write a presentation paragraph of at least four sentences: your name, where you are from, where your parents are from, and an introduction of one classmate in third person (name and origin).",model:"Hola. Me llamo Dillon. Yo soy de Los Ángeles. Mis padres son de Guatemala. Éste es Marco. Él es de Hawthorne. Sus padres son de México.",why:"Check: <i>me llamo</i>, <i>soy de</i>, <i>son de</i>, and a correct <i>Éste/Ésta es</i> + <i>es de</i> for the classmate."}
+]}
+];
+
+const $=(s,r)=>(r||document).querySelector(s);
+const store={
+  get(){try{return JSON.parse(localStorage.getItem('repaso-esp1')||'{}')}catch(e){return{}}},
+  set(o){try{localStorage.setItem('repaso-esp1',JSON.stringify(o))}catch(e){}}
+};
+const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .replace(/[¿?¡!.,;:"'()\/]/g,' ').replace(/\s+/g,' ').trim();
+
+let active=0, answers={}, graded=false, self={};
+
+function judge(q,v){
+  const a=norm(v);
+  if(!a) return false;
+  if(q.mode==='has') return q.has.every(h=>a.includes(norm(h)));
+  if(q.mode==='any') return q.any.filter(x=>a.includes(norm(x))).length>=q.n;
+  return (q.ok||[]).some(x=>norm(x)===a);
+}
+
+function render(){
+  const T=TESTS[active];
+  const stage=$('#stage');
+  stage.innerHTML=`
+    <div class="exam-head">
+      <div class="eyebrow">Examen ${String(T.n).padStart(2,'0')} de 10 · ${T.qs.length} preguntas</div>
+      <h2>${T.title}</h2>
+      <p class="focus">${T.focus}</p>
+      <div class="bar">
+        <button class="btn solid" id="grade" type="button">Calificar</button>
+        <button class="btn" id="reset" type="button">Reiniciar</button>
+        <button class="btn" id="reveal" type="button">Ver respuestas</button>
+        <span class="verdict" id="verdict">Sin calificar</span>
+      </div>
+    </div>
+    <ol class="qlist" id="qlist"></ol>`;
+
+  const list=$('#qlist');
+  T.qs.forEach((q,i)=>{
+    const li=document.createElement('li');
+    li.className='q'; li.id='q'+i;
+    let body='';
+    if(q.t==='mc'){
+      body='<div class="opts">'+q.o.map((o,j)=>
+        `<label class="opt" data-i="${j}"><input type="radio" name="q${i}" value="${j}"><span class="ltr">${'ABCD'[j]}</span><span>${o}</span></label>`
+      ).join('')+'</div>';
+    } else if(q.t==='open'){
+      body=`<textarea class="blank" data-i="${i}" rows="4" placeholder="Escribe aquí…"></textarea>`;
+    } else {
+      body=`<input class="blank" data-i="${i}" type="text" autocomplete="off" spellcheck="false" placeholder="Tu respuesta">`;
+    }
+    li.innerHTML=`<div class="qn">${String(i+1).padStart(2,'0')}</div>
+      <div class="sec">${q.s}</div>
+      <p class="prompt">${q.q}</p>
+      <div class="body">${body}</div>`;
+    list.appendChild(li);
+  });
+
+  list.addEventListener('change',e=>{
+    if(graded) return;
+    const t=e.target;
+    if(t.type==='radio'){ answers[t.name.slice(1)]=+t.value; }
+  });
+  list.addEventListener('input',e=>{
+    if(graded) return;
+    const t=e.target;
+    if(t.dataset.i!==undefined) answers[t.dataset.i]=t.value;
+  });
+
+  $('#grade').onclick=()=>grade(false);
+  $('#reveal').onclick=()=>grade(true);
+  $('#reset').onclick=()=>{answers={};graded=false;self={};render();window.scrollTo({top:0,behavior:'smooth'})};
+  paintRail();
+}
+
+function grade(revealAll){
+  const T=TESTS[active];
+  graded=true;
+  T.qs.forEach((q,i)=>{
+    const li=document.getElementById('q'+i);
+    li.querySelectorAll('input,textarea').forEach(el=>el.disabled=true);
+    const old=li.querySelector('.fb'); if(old) old.remove();
+    const fb=document.createElement('div'); fb.className='fb';
+    let bits='';
+
+    if(q.t==='mc'){
+      li.querySelector('.opts').classList.add('graded');
+      const chosen=answers[i];
+      li.querySelectorAll('.opt').forEach(el=>{
+        const j=+el.dataset.i;
+        if(j===q.a) el.classList.add('is-key');
+        else if(j===chosen) el.classList.add('is-miss');
+      });
+      const ok=chosen===q.a;
+      li.classList.add(ok?'right':'wrong');
+      self[i]=ok;
+      bits=`<span class="tag ${ok?'y':'n'}">${ok?'Correcto':(chosen===undefined?'Sin responder':'Incorrecto')}</span>`;
+      if(!ok) bits+=`Respuesta: <b>${'ABCD'[q.a]}. ${q.o[q.a]}</b>`;
+      if(q.why) bits+=`<p class="why">${q.why}</p>`;
+    }
+    else if(q.t==='open'){
+      const marked=self[i];
+      bits=`<span class="tag q">Autoevaluación</span>Compara tu respuesta con el modelo.
+        <div class="model"><span class="lab">Respuesta modelo</span><span class="txt">${q.model}</span></div>
+        ${q.why?`<p class="why">${q.why}</p>`:''}
+        <div class="selfmark"><span class="lab">¿La tuya vale?</span>
+          <button class="sm y" type="button" data-mark="1" data-i="${i}" aria-pressed="${marked===true}">Sí, correcta</button>
+          <button class="sm n" type="button" data-mark="0" data-i="${i}" aria-pressed="${marked===false}">No, revisar</button>
+        </div>`;
+      if(marked===true) li.classList.add('right');
+      if(marked===false) li.classList.add('wrong');
+    }
+    else{
+      const ok=judge(q,answers[i]);
+      if(self[i]===undefined) self[i]=ok;
+      li.classList.add(self[i]?'right':'wrong');
+      bits=`<span class="tag ${self[i]?'y':'n'}">${self[i]?'Correcto':(answers[i]?'Incorrecto':'Sin responder')}</span>`;
+      bits+=`<div class="model"><span class="lab">Respuesta modelo</span><span class="txt">${q.model}</span></div>`;
+      if(q.why) bits+=`<p class="why">${q.why}</p>`;
+      if(!ok) bits+=`<div class="selfmark"><span class="lab">¿Escribiste algo equivalente?</span>
+          <button class="sm y" type="button" data-mark="1" data-i="${i}" aria-pressed="${self[i]===true}">Contar como correcta</button></div>`;
+    }
+    fb.innerHTML=bits;
+    li.appendChild(fb);
+  });
+
+  document.querySelectorAll('[data-mark]').forEach(b=>{
+    b.onclick=()=>{
+      const i=+b.dataset.i, v=b.dataset.mark==='1';
+      self[i]=(self[i]===v)?undefined:v;
+      grade(revealAll);
+    };
+  });
+  tally();
+}
+
+function tally(){
+  const T=TESTS[active];
+  let right=0, pending=0;
+  T.qs.forEach((q,i)=>{ if(self[i]===true) right++; else if(self[i]===undefined) pending++; });
+  const total=T.qs.length;
+  const pct=Math.round(right/total*100);
+  $('#verdict').innerHTML=`<span class="pct">${right} / ${total}</span> &nbsp;·&nbsp; ${pct}%`+
+    (pending?` &nbsp;·&nbsp; <span class="pend">${pending} por autoevaluar</span>`:'');
+  const st=store.get(); st['t'+T.n]=pct; store.set(st);
+  paintRail();
+}
+
+function paintRail(){
+  const st=store.get();
+  $('#rail').innerHTML=TESTS.map((T,i)=>{
+    const sc=st['t'+T.n];
+    const cls=sc===undefined?'':(sc>=80?'hi':sc>=60?'mid':'lo');
+    return `<li><button class="pick" type="button" data-t="${i}" aria-current="${i===active}">
+      <span class="num">${String(T.n).padStart(2,'0')}</span>
+      <span class="nm">${T.title}</span>
+      <span class="chip ${cls}">${sc===undefined?'—':sc+'%'}</span>
+    </button></li>`;
+  }).join('');
+  $('#rail').querySelectorAll('.pick').forEach(b=>{
+    b.onclick=()=>{ active=+b.dataset.t; answers={}; self={}; graded=false; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+  });
+  const done=TESTS.filter(T=>st['t'+T.n]!==undefined).length;
+  $('#done-tally').textContent=done+' / 10';
+}
+
+$('#themer').onclick=()=>{
+  const r=document.documentElement;
+  const dark=r.getAttribute('data-theme')==='dark' ||
+    (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark?'light':'dark');
+};
+
+render();
+</script>
